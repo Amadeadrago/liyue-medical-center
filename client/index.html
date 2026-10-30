@@ -1,0 +1,837 @@
+<!DOCTYPE html> 
+<html lang="eng"> 
+  <head> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liyue Medical Center</title>
+
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<style> 
+html{
+  scroll-behavior: smooth; 
+}
+*{
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+body{
+  background-color: #0d1210; 
+  color: #ffffff; 
+  font-family: 'Plus Jakarta Sans', sans-serif; 
+  min-height: 100vh; 
+}
+.homepage-bg{
+  background: url('https://i.pinimg.com/1200x/08/0f/38/080f3844cc32e4d562485da8923e4653.jpg') no-repeat center fixed; 
+  background-size: cover;
+  position: relative; 
+}
+.homepage-bg::before{
+  content: '';
+  position: absolute; 
+  top: 0; left:0; right:0; bottom:0; 
+  background: rgba(0,0,0,0.55); 
+  z-index: 1; 
+}
+.homepage-content{
+  position: relative; 
+  z-index: 2; 
+}
+.editorial-nav {
+  background-color: rgba(2, 28, 42, 0.65) !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 2px 10px rgba(4, 64, 96, 0.1) !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  min-height: 60px !important; 
+}
+.nav-logo-img{
+  width: 55px; 
+  height: 55px; 
+  object-fit: cover; 
+  border-radius: 50%; 
+  border: 1px solid rgba(252, 234, 187, 0.6); 
+  box-shadow: 0 0 10px rgba(252, 234, 187, 0.2); 
+  transition: all 0.3s ease; 
+}
+.nav-logo-img:hover{
+  transform: scale(1.1);
+  border-color: #fceabb; 
+  box-shadow: 0 0 15px rgba(252, 234, 187, 0.5); 
+}
+.editorial-link{
+  color: rgba(255, 255, 255, 0.85) !important; 
+  font-size: 0.85rem; 
+  font-weight: 400; 
+  letter-spacing: 0.8px; 
+  text-decoration: none; 
+  transition: all 0.3s ease; 
+}
+.editorial-link:hover{
+  color: #ffffff !important; 
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+}
+.genshin-dropdown-menu{
+  background: rgba(13, 22, 18, 0.92) !important; 
+  border: 1px solid rgba(252, 234, 187, 0.3) !important; 
+  backdrop-filter: blur (12px); 
+  border-radius: 12px !important; 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important; 
+  padding: 8px 0 !important; 
+  z-index: 1050 !important; 
+}
+.genshin-dropdown-item{
+  color: #ffffff !important; 
+  font-size: 0.88rem !important; 
+  padding: 10px 20px !important; 
+  transition: all 0.2s ease !important; 
+}
+.genshin-dropdown-item:hover{
+  background-color: rgba(252, 234, 187, 0.15) !important; 
+}
+.genshin-dropdown-diviver{
+  border-color: rgba(252, 234, 187, 0.2) !important; 
+}
+.hero-title{
+  font-family: 'Playfair Display', serif; 
+  font-size: clamp(3.2rem, 7.5vw, 7rem); 
+  font-weight: 400; 
+  line-height: 0.95; 
+  letter-spacing: -1.5px; 
+  color: #ffffff; 
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
+}
+.hero-title span.italic-accent{
+  font-style: italic; 
+  font-weight: 400; 
+}
+.btn-editorial-capsule{
+  background-color: transparent; 
+  color: #ffffff; 
+  font-family: 'Playfair Display', serif; 
+  font-size: 0.9rem; 
+  font-weight: 500; 
+  border-radius: 50px; 
+  padding: 14px 42px; 
+  border: 1px solid rgba(255, 255, 255, 0.7); 
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); 
+  transition: all 0.3s ease; 
+  text-decoration: none; 
+  display: inline-block; 
+}
+.btn-editorial-capsule:hover{
+  background-color: transparent; 
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
+}
+.story-section {
+  background-color: #FFFCF3; 
+  padding: 100px 24px; 
+  position: relative; 
+}
+.story-subtitle{
+  font-size: 0.75rem; 
+  letter-spacing: 2px; 
+  color: #790707 !important; 
+  text-transform: uppercase; 
+  margin-bottom: 8px; 
+}
+.story-main-title{
+  font-family: 'Playfair Display', serif; 
+  font-size: clamp(2.5rem, 5vw, 3.8rem); 
+  font-weight: 500; 
+  color: #011c2a; 
+  margin-bottom: 20px; 
+}
+.story-desc
+{
+  font-size: 0.88rem; 
+  color: #2c424f !important; /* Teks deskripsi gelap agar kontras */
+  line-height: 1.7; 
+  margin-bottom: 32px; 
+}
+.stats-horizontal-container{
+  display: flex !important; 
+  flex-direction: row !important; 
+  flex-wrap: nowrap !important; 
+  gap: 28px !important; 
+  margin-top: 24px; 
+  width: 100% !important; 
+}
+.stat-item{
+  display: flex !important; 
+  flex-direction: column !important; 
+  align-items: flex-start !important;
+  white-space: nowrap !important; 
+}
+.stat-num{
+  font-family: 'Playfair Display', serif !important; 
+  font-size: 2.2rem !important; 
+  font-weight: 600 !important; 
+  color: #044060 !important; 
+  line-height: 1 !important; 
+  margin-bottom: 4px !important; 
+}
+.stat-label{
+  font-family: 'Plus Jakarta Sans', sans-serif !important; 
+  font-size: 0.85rem !important; 
+  color: #5c707d;
+  line-height: 1.2 !important; 
+}
+.center-logo-wrapper{
+  position: relative; 
+  display: inline-flex; 
+  justify-content: center; 
+  align-items: center; 
+  padding: 10px; 
+}
+.center-logo-wrapper::before{
+  content:''; 
+  position: absolute; 
+  width: 220px; 
+  height: 220px; 
+  border-radius: 50%; 
+  background: rgba(191, 214, 226, 0.4);
+  box-shadow: 0 0 40px rgba(4, 64, 96, 0.1);
+
+  z-index: 1; 
+  pointer-events: none; 
+}
+.center-logo-img{
+  width: 350px !important; 
+  height: 350px !important; 
+  max-width: 350px !important; 
+  object-fit: cover; 
+  border-radius: 50%; 
+  clip-path: circle( 38% at 50% 50%); 
+  transform: scale(1.08); 
+  position: relative; 
+  z-index: 2; 
+  transition: transform 0.4s ease; 
+  
+}
+
+.story-glass-card{
+  background: #ffffff !important; 
+  border: 1px solid #D8DBDB; 
+  border-radius: 16px !important; 
+  padding: 24px 28px !important; 
+  backdrop-filter: blur(12px) !important; 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important; 
+  margin-bottom: 20px !important; 
+  width: 100% !important; 
+  max-width: 38-px !important; 
+  box-sizing: border-box !important; 
+  display: block !important; 
+  position: relative !important; 
+  cursor: pointer !important; 
+  transition: all 0.3 ease !important; 
+}
+.story-glass-card:hover{
+  border-color: #044060; 
+  transform: translateY(-4px) !important; 
+  background: #ffffff !important; 
+  box-shadow: 0 12px 30px rgba(4, 64, 96, 0.12) !important;
+}
+.card-hint-click{
+  font-size: 0.75rem; 
+  color: #790707; 
+  opacity: 0.8; 
+  margin-top: 14px; 
+  display: flex; 
+  align-items: center; 
+  gap: 6px; 
+  font-weight: 600; 
+  transition: opacity 0.2s ease; 
+}
+.story-glass-card:hover .card-hint-click{
+  opacity: 1; 
+}
+.story-model-overlay{
+  position: fixed; 
+  inset: 0; 
+  background: rgba(4, 64, 96, 0.4); 
+  backdrop-filter: blur(8px); 
+  z-index: 2500; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 20px; 
+}
+.story-model-card{
+  background: #FFFCF3; 
+  border: 1px solid #BFD6E2;  
+  border-radius: 24px; 
+  width: 100%; 
+  max-width: 600px; 
+  max-height: 85vh; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  padding: 36px 32px; 
+  box-shadow: 0 25px 60px rgba(4, 64, 96, 0.15); 
+  position: relative; 
+  color: #044060; 
+  animation: modelPopIn 0.3s ease forwards; 
+}
+.story-model-card::-webkit-scrollbar{
+  width: 6px !important; 
+}
+.story-model-card::-webkit-scrollbard-track{
+  background: rgba(6, 24, 18, 0.6) !important; 
+  border-radius: 10px !important; 
+  margin: 16px 1 !important; 
+}
+.story-model-card:-webkit-scrollbar-thumb{
+  background: rgba(252, 234, 187, 0.35) !important; 
+  border-radius: 10px !important; 
+  border: 1px solid rgba(252, 234, 187, 0.2) !important;
+  transition: all 0.3s ease !important; 
+}
+.story-model-card::-webkit-scrollbar-thumb:hover{
+  background: rgba(252, 234, 187,0.8) !important; 
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.6) !important; 
+}
+
+.story-model-img{
+  width: 100%; 
+  max-width: 100%; 
+  height: auto; 
+  max-height: 280px; 
+  object-fit: cover; 
+  border-radius: 12px; 
+  border: 1px solid rgba (252, 234, 187, 0.3); 
+  box-shadow: 0 6px 20px (0, 0, 0, 0.5); 
+  display: block; 
+  margin: 0 auto; 
+}
+@keyframes modelPopIn{
+  from{opacity: 0; transfprm: scale(0.92) translateY(15px);}
+  to{opacity: 1; transform: scale(1) translate(0);}
+}
+.story-model-title{
+  font-family: 'Playfair Display', serif; 
+  font-size: 2rem; 
+  color: #044060; 
+  margin-bottom: 6px; 
+}
+.story-model-badge{
+  font-size: 0.75rem; 
+  letter-spacing: 1.5px; 
+  color: #790707; 
+  text-transform: uppercase; 
+  margin-bottom: 20px; 
+  display: block; 
+}
+.story-model-body{
+  font-family: 'Plus Jakarta Sans', sans-serif; 
+  font-size: 0.93rem; 
+  color: #2c424f; 
+  line-height: 1.8; 
+  font-weight: 300; 
+}
+.story-model-body p{
+  margin-bottom: 16px; 
+}
+.close-story-model-btn{
+  position: absolute; 
+  top: 20px; 
+  right: 20px; 
+  width: 36px; 
+  border-radius: 50%;
+  background: rgba(4, 64, 96, 0.05); 
+  color: #044060; 
+  border: 1px solid #D8DBDB; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  cursor: pointer; 
+  transition: all 0.2s ease; 
+  font-size: 1.1rem; 
+}
+.close-story-model-btn:hover{
+  background: #790707; 
+  color: #ffffff;
+  border-color: #790707; 
+}
+
+.card-story-title{ 
+  font-family: 'Playfair Display', serif !important; 
+  font-size: 1.3rem !important; 
+  font-weight: 600 !important; 
+  color: #044060 !important;
+  margin-top: 0 !important; 
+  margin-bottom: 10px !important; 
+  padding: 0 !important; 
+  border: none !important; 
+}
+.card-story-text{
+  font-family: 'Plus Jakarta Sans', sans-serif !important; 
+  font-size: 0.88rem !important; 
+  font-weight: 300 !important; 
+  color: #4a6270 !important; 
+  line-height: 1.6 !important; 
+  margin: 0 !important; 
+  padding: 0 !important; 
+}
+@keyframes scrollFadeIn{
+  from{
+    opacity: 0; 
+    transform: translateY(40px); 
+  }
+  to{
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+.fade-on-scroll{
+  animation: scrollFadeIn linear both; 
+  animation-timeline: view(); 
+  animation-range: entry 10% cover 30%; 
+}
+.liyue-services-section {
+  background-color: #FFFCF3 !important;
+  padding: 100px 24px !important;
+  position: relative !important;
+  border-top: 1px solid #D8DBDB !important;
+  border-bottom: 1px solid #D8DBDB !important;
+  box-sizing: border-box !important;
+}
+.liyue-services-section .container-fluid {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+}
+
+.services-header-subtitle {
+  font-size: 0.75rem !important;
+  letter-spacing: 2px !important;
+  color: #790707 !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+}
+
+.services-header-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(2.2rem, 4vw, 3.2rem) !important;
+  font-weight: 600 !important;
+  color: #044060 !important; 
+  line-height: 1.2 !important;
+}
+
+
+.services-scroll-container {
+  display: flex !important;
+  gap: 24px !important;
+  overflow-x: auto !important;
+  scroll-behavior: smooth !important;
+  padding: 10px 5px 25px 5px !important;
+  width: 100% !important;
+}
+
+.services-scroll-container::-webkit-scrollbar {
+  height: 6px !important;
+}
+.services-scroll-container::-webkit-scrollbar-track {
+  background: #D8DBDB !important;
+  border-radius: 4px !important;
+}
+.services-scroll-container::-webkit-scrollbar-thumb {
+  background: #044060 !important;
+  border-radius: 4px !important;
+}
+
+.liyue-service-item-card {
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 380px !important;
+  background-color: #044060 !important; 
+  border-radius: 20px !important;
+  padding: 32px 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  cursor: pointer !important;
+  box-shadow: 0 10px 30px rgba(4, 64, 96, 0.15) !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid rgba(191, 214, 226, 0.15) !important;
+}
+
+.liyue-service-item-card:hover {
+  transform: translateY(-8px) !important;
+  background-color: #03324d !important;
+  box-shadow: 0 18px 40px rgba(4, 64, 96, 0.25) !important;
+  border-color: #BFD6E2 !important;
+}
+.service-card-icon-img 
+{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.service-card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.service-card-number {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 3rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  line-height: 1 !important;
+}
+.service-card-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+.service-card-name {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 1.15rem !important;
+  font-weight: 500 !important;
+  color: #FFFCF3 !important; 
+  line-height: 1.4 !important;
+  margin: 0 !important;
+}
+
+
+.service-card-arrow {
+  min-width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  background: transparent !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  font-size: 1.1rem !important;
+}
+
+.liyue-service-item-card:hover .service-card-arrow {
+  background: #790707 !important; 
+  border-color: #790707 !important;
+  transform: translateX(3px) !important;
+}
+
+.liyue-story-divider {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 520px !important;
+  background-image: linear-gradient(to right, rgba(2, 27, 41, 0.88) 0%, rgba(2, 27, 41, 0.65) 50%, rgba(2, 27, 41, 0.2) 100%), 
+                    url('https://i.pinimg.com/1200x/41/b3/29/41b32979a5f836e96f9881862150984a.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 80px 40px !important;
+  border-top: 1px solid rgba(191, 214, 226, 0.2) !important;
+  border-bottom: 1px solid rgba(191, 214, 226, 0.2) !important;
+}
+
+.story-category-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 2px !important;
+  color: #BFD6E2 !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  margin-bottom: 12px !important;
+}
+
+.story-main-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(2rem, 3.5vw, 3rem) !important;
+  font-weight: 600 !important;
+  color: #FFFCF3 !important;
+  line-height: 1.25 !important;
+  margin-bottom: 20px !important;
+  max-width: 650px !important;
+}
+
+.story-doctor-box {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-bottom: 20px !important;
+}
+
+.story-doctor-avatar {
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 2px solid #BFD6E2 !important;
+}
+
+.story-doctor-name {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.story-doctor-spec {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.78rem !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  margin: 0 !important;
+}
+
+.story-excerpt {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.92rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  line-height: 1.7 !important;
+  max-width: 620px !important;
+  margin-bottom: 28px !important;
+  font-weight: 300 !important;
+}
+
+.story-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.story-link-item {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: #FFFCF3 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease !important;
+  width: fit-content !important;
+}
+
+.story-link-item:hover {
+  color: #BFD6E2 !important;
+  transform: translateX(4px) !important;
+}
+
+#appointment {
+  background-color: #FFFCF3 !important;
+  min-height: 100vh !important;          
+  display: flex !important;
+  align-items: center !important;         
+  padding: 80px 40px !important;
+  position: relative !important;
+  border-top: 1px solid #D8DBDB !important;
+  border-bottom: 1px solid #D8DBDB !important;
+}
+
+#appointment .container-fluid {
+  max-width: 1500px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+.appointment-card-box {
+  background-color: #044060 !important; 
+  border: 1px solid #BFD6E2 !important;
+  border-radius: 24px !important;
+  padding: 48px 42px !important;
+  box-shadow: 0 20px 50px rgba(4, 64, 96, 0.22) !important;
+  width: 100% !important;
+}
+
+.appointment-left-subtitle {
+  font-size: 0.8rem !important;
+  letter-spacing: 2.5px !important;
+  color: #790707 !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  margin-bottom: 12px !important;
+}
+
+.appointment-left-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem) !important;
+  font-weight: 600 !important;
+  color: #044060 !important;
+  line-height: 1.15 !important;
+  margin-bottom: 20px !important;
+}
+
+.appointment-left-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 1rem !important;
+  color: #3b5261 !important;
+  line-height: 1.8 !important;
+}
+
+.appointment-form-label {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  color: #FFFCF3 !important;
+  margin-bottom: 8px !important;
+}
+
+.appointment-input-field,
+.appointment-select-field {
+  background-color: rgba(3, 44, 66, 0.65) !important;
+  border: 1px solid rgba(191, 214, 226, 0.4) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 13px 16px !important;
+  font-size: 0.95rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.appointment-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.appointment-input-field:focus,
+.appointment-select-field:focus {
+  background-color: #032c42 !important;
+  border-color: #BFD6E2 !important;
+  box-shadow: 0 0 15px rgba(191, 214, 226, 0.3) !important;
+  color: #ffffff !important;
+  outline: none !important;
+}
+
+.appointment-select-field option {
+  background-color: #044060 !important;
+  color: #ffffff !important;
+}
+
+.appointment-submit-btn {
+  background-color: #790707 !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important;
+  padding: 15px 38px !important;
+  border-radius: 50px !important;
+  box-shadow: 0 8px 25px rgba(121, 7, 7, 0.35) !important;
+  transition: all 0.3s ease !important;
+  font-size: 1rem !important;
+}
+
+.appointment-submit-btn:hover {
+  background-color: #5d0505 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 30px rgba(121, 7, 7, 0.45) !important;
+}
+
+.liyue-footer-section {
+  background-color: #021B29 !important; 
+  color: #ffffff !important;
+  padding: 24px 30px 18px 30px !important; 
+  border-top: 1px solid rgba(191, 214, 226, 0.15) !important;
+  position: relative !important;
+}
+
+.footer-container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+.footer-header-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+  margin-bottom: 12px !important;
+  border-bottom: 1px solid rgba(191, 214, 226, 0.1) !important;
+  padding-bottom: 12px !important;
+}
+
+.footer-title {
+  font-family: 'Playfair Display', serif !important;
+  font-size: clamp(1.3rem, 2vw, 1.7rem) !important;
+  font-weight: 600 !important;
+  color: #FFFCF3 !important;
+  margin: 0 !important;
+}
+
+.footer-affiliates-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+}
+
+.affiliate-logo-item {
+  width: 95px !important;  
+  height: 95px !important; 
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(191, 214, 226, 0.3) !important;
+  border-radius: 16px !important;
+  padding: 10px !important;
+  filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.5)) !important;
+  transition: all 0.3s ease !important;
+}
+
+.affiliate-logo-item:hover {
+  transform: scale(1.08) translateY(-2px) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: #BFD6E2 !important;
+}
+
+.footer-desc-text {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.82rem !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  line-height: 1.5 !important;
+  max-width: 900px !important;
+  margin-bottom: 10px !important;
+  font-weight: 300 !important;
+}
+
+.footer-learn-more {
+  color: #BFD6E2 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.footer-learn-more:hover {
+  color: #ffffff !important;
+}
+
+.footer-bottom-divider {
+  border-color: rgba(191, 214, 226, 0.1) !important;
+  margin-top: 14px !important;
+  margin-bottom: 10px !important;
+}
+
+.footer-copyright {
+  font-size: 0.72rem !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  text-align: center !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+</style>
+</head>
+<body>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</body>
+</html> 
